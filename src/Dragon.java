@@ -3,7 +3,6 @@ import java.awt.*;
 
 public class Dragon extends JPanel {
 
-
     public void drawDragon(int iter, Graphics graphics, double x1, double y1, double x2, double y2, boolean left) {
         if (iter == 0) {
             graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
@@ -30,10 +29,6 @@ public class Dragon extends JPanel {
 
         drawDragon(20, g, 300,300, 800, 300, true);
     }
-
-    /*private static void drawline(int x1, int y1, int x2, int y2) {
-
-    }*/
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Application Fractales");
