@@ -7,7 +7,7 @@ public class Koch extends JPanel {
         if (iter == 0) {
             graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
         } else {
-            double deltaX, deltaY;;
+            double deltaX, deltaY;
 
             deltaX = (x2 - x1) / 3;
             deltaY = (y2 - y1) / 3;
@@ -39,8 +39,7 @@ public class Koch extends JPanel {
         super.paintComponent(g);
 
         g.setColor(Color.BLUE);
-
-        kochCurve(10, g, 300,300, 800, 300, true);
+        kochCurve(5, g, 300,300, 800, 300, true);
     }
 
     public static void main(String[] args) {
