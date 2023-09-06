@@ -17,19 +17,31 @@ public class Carpet extends JPanel {
     }
 
     public void carpetSierpinski(int iter, Graphics graphics, double x1, double y1, double size) {
-        double length = size /3;
-        graphics.fillRect((int) (x1+length), (int) (y1+length), (int) length, (int) length);
-        if (iter == 0) {
-            return;
-//            graphics.fillRect((int) x1, (int) y1, (int) size, (int) size);
-        } else {
-            carpetSierpinski(iter-1,graphics,x1,y1,length);
-            carpetSierpinski(iter-1,graphics,x1+length,y1,length);
-            carpetSierpinski(iter-1,graphics,x1+2*length,y1,length);
-            carpetSierpinski(iter-1,graphics,x1,y1+length,length);
-            carpetSierpinski(iter-1,graphics,x1,y1+2*length,length);
-            carpetSierpinski(iter-1,graphics,x1+length,y1+2*length,length);
 
+        double length = size /3;
+        double nextSize = length * 2;
+
+        graphics.fillRect((int) (x1+length), (int) (y1+length), (int) length, (int) length);
+
+        if (iter > 0) {
+
+            carpetSierpinski(iter - 1, graphics, x1, y1, length);  // Carré supérieur gauche
+            graphics.setColor(Color.BLUE);
+            carpetSierpinski(iter - 1, graphics, x1 + nextSize, y1, length);  // Carré supérieur droit
+            graphics.setColor(Color.GREEN);
+            carpetSierpinski(iter - 1, graphics, x1, y1 + nextSize, length);  // Carré inférieur gauche
+            graphics.setColor(Color.GRAY);
+            carpetSierpinski(iter - 1, graphics, x1 + nextSize, y1 + nextSize, length);  // Carré inférieur droit
+            graphics.setColor(Color.RED);
+
+            carpetSierpinski(iter - 1, graphics, x1 + length, y1, length);  // Carré supérieur central
+            graphics.setColor(Color.BLACK);
+            carpetSierpinski(iter - 1, graphics, x1, y1 + length, length);  // Carré central gauche
+            graphics.setColor(Color.YELLOW);
+            carpetSierpinski(iter - 1, graphics, x1 + nextSize, y1 + length, length);  // Carré central droit
+            graphics.setColor(Color.ORANGE);
+            carpetSierpinski(iter - 1, graphics, x1 + length, y1 + nextSize, length);  // Carré inférieur central
+            graphics.setColor(Color.PINK);
         }
     }
 
@@ -39,7 +51,7 @@ public class Carpet extends JPanel {
 
         g.setColor(Color.BLACK);
 
-        carpetSierpinski(2, g, 100, 100, 600);
+        carpetSierpinski(10, g, 100, 100, 600);
 
     }
 }
